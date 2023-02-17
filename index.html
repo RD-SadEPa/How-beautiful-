@@ -4,59 +4,68 @@
 <head>
     <title>彩色圆点动画</title>
     <style>
+        /* 重置页面默认的边距和填充 */
         body {
             margin: 0;
             padding: 0;
         }
 
+        /* 创建一个名为circle的动画，用于控制圆的位置、大小和透明度 */
         @keyframes circle {
+
+            /* 设置动画的起始状态 */
             0% {
                 transform: translate(0, 0) scale(1);
                 opacity: 1;
             }
 
+            /* 设置动画的结束状态 */
             100% {
                 transform: translate(50px, 50px) scale(5);
                 opacity: 0;
             }
         }
 
+        /* 定义一个样式类circle，用于添加到圆形元素上 */
         .circle {
+            /* 使圆形元素以绝对定位放置在页面上 */
             position: absolute;
+            /* 设置圆形元素的边框半径为50%以创建一个圆形形状 */
             border-radius: 50%;
-            animation: circle 5s linear infinite;
-        }
-
-        #circle1 {
-            background-color: red;
-            height: 50px;
-            width: 50px;
-            top: 10%;
-            left: 20%;
-        }
-
-        #circle2 {
-            background-color: green;
-            height: 70px;
-            width: 70px;
-            top: 30%;
-            left: 50%;
-        }
-
-        #circle3 {
-            background-color: blue;
-            height: 30px;
-            width: 30px;
-            top: 60%;
-            left: 80%;
+            /* 将circle动画应用于圆形元素 */
+            animation: circle 10s linear;
+            /* 在动画结束后保持元素在页面上 */
+            animation-fill-mode: forwards;
         }
     </style>
 </head>
 
 <body>
-    <div id="circle1" class="circle"></div>
-    <div id="circle2" class="circle"></div>
-    <div id="circle3" class="circle"></div>
+    <script>
+        /* 创建一个函数，用于在随机位置上创建圆形元素 */
+        function createCircle() {
+            /* 创建一个新的div元素 */
+            var circle = document.createElement("div");
+            /* 将元素添加到页面上 */
+            document.body.appendChild(circle);
+            /* 添加类circle到元素上，这将应用动画 */
+            circle.classList.add("circle");
+            /* 设置圆形元素的随机位置 */
+            circle.style.top = Math.random() * 90 + "%";
+            circle.style.left = Math.random() * 90 + "%";
+            /* 设置随机的背景颜色 */
+            var colors = ["red", "green", "blue", "orange", "purple"];
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            circle.style.backgroundColor = color;
+            /* 在10秒后从页面上删除元素 */
+            setTimeout(function () {
+                circle.remove();
+            }, 10000);
+        }
+
+        /* 每0.25秒调用一次createCircle函数以创建新的圆形元素 */
+        setInterval(createCircle, 250);
+    </script>
 </body>
 
 </html>
