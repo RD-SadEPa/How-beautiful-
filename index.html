@@ -2,54 +2,70 @@
 <html>
 
 <head>
-    <title>彩色圆点动画</title>
+    <title>My Beautiful Webpage</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
         }
 
-        @keyframes circle {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(5);
-                opacity: 0;
-            }
+        h1 {
+            font-size: 48px;
+            color: #222;
+            text-align: center;
+            margin-top: 50px;
         }
 
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            animation: circle 1s linear;
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+            border-radius: 10px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #42b983;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #38a174;
         }
     </style>
 </head>
 
 <body>
-    <script>
-        function randomPosition() {
-            var x = Math.floor(Math.random() * window.innerWidth);
-            var y = Math.floor(Math.random() * window.innerHeight);
-            return [x, y];
-        }
-
-        function createCircle() {
-            var color = ['red', 'green', 'blue', 'orange', 'purple', 'pink'];
-            var circle = document.createElement('div');
-            circle.className = 'circle';
-            circle.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
-            var pos = randomPosition();
-            circle.style.top = pos[1] + 'px';
-            circle.style.left = pos[0] + 'px';
-            document.body.appendChild(circle);
-        }
-
-        setInterval(createCircle, 250);
-    </script>
+    <div class="container">
+        <h1>Welcome to my beautiful webpage!</h1>
+        <p>This is a simple and beautiful webpage created using HTML and CSS. It has a clean and elegant design that is
+            easy on the eyes.</p>
+        <p>The background color is a light shade of gray (#f8f8f8) which provides a nice contrast with the white
+            container. The text is in a dark shade of gray (#333) and the font used is Arial, which is a commonly used
+            sans-serif font that is easy to read.</p>
+        <p>The container has a maximum width of 800px and is centered on the page. It has a padding of 40px at the top
+            and bottom and 20px on the sides. The container also has a box-shadow and a border-radius to give it a
+            subtle 3D effect.</p>
+        <p>The text is justified and has a line-height of 1.5 to make it easier to read. The buttons have a background
+            color of #42b983 and a hover effect that changes the color to #38a174.</p>
+        <a href="#" class="btn">Learn More</a>
+    </div>
 </body>
 
 </html>
