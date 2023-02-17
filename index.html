@@ -4,35 +4,26 @@
 <head>
     <title>彩色圆点动画</title>
     <style>
-        /* 重置页面默认的边距和填充 */
         body {
             margin: 0;
             padding: 0;
         }
 
-        /* 创建一个名为circle的动画，用于控制圆的大小和透明度 */
         @keyframes circle {
-
-            /* 设置动画的起始状态 */
             0% {
                 transform: scale(0);
                 opacity: 1;
             }
 
-            /* 设置动画的结束状态 */
             100% {
                 transform: scale(5);
                 opacity: 0;
             }
         }
 
-        /* 定义一个样式类circle，用于添加到圆形元素上 */
         .circle {
-            /* 使圆形元素以绝对定位放置在页面上 */
             position: absolute;
-            /* 设置圆形元素的边框半径为50%以创建一个圆形形状 */
             border-radius: 50%;
-            /* 将circle动画应用于圆形元素 */
             animation: circle 1s linear;
         }
     </style>
@@ -40,14 +31,12 @@
 
 <body>
     <script>
-        // 用于生成随机位置的函数
         function randomPosition() {
             var x = Math.floor(Math.random() * window.innerWidth);
             var y = Math.floor(Math.random() * window.innerHeight);
             return [x, y];
         }
 
-        // 用于创建一个新的圆形元素并将其添加到页面上的函数
         function createCircle() {
             var color = ['red', 'green', 'blue', 'orange', 'purple', 'pink'];
             var circle = document.createElement('div');
@@ -59,7 +48,6 @@
             document.body.appendChild(circle);
         }
 
-        // 每0.25秒创建一个新的圆形元素
         setInterval(createCircle, 250);
     </script>
 </body>
