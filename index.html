@@ -10,18 +10,18 @@
             padding: 0;
         }
 
-        /* 创建一个名为circle的动画，用于控制圆的位置、大小和透明度 */
+        /* 创建一个名为circle的动画，用于控制圆的大小和透明度 */
         @keyframes circle {
 
             /* 设置动画的起始状态 */
             0% {
-                transform: translate(0, 0) scale(1);
+                transform: scale(0);
                 opacity: 1;
             }
 
             /* 设置动画的结束状态 */
             100% {
-                transform: translate(50px, 50px) scale(5);
+                transform: scale(5);
                 opacity: 0;
             }
         }
@@ -33,37 +33,33 @@
             /* 设置圆形元素的边框半径为50%以创建一个圆形形状 */
             border-radius: 50%;
             /* 将circle动画应用于圆形元素 */
-            animation: circle 10s linear;
-            /* 在动画结束后保持元素在页面上 */
-            animation-fill-mode: forwards;
+            animation: circle 1s linear;
         }
     </style>
 </head>
 
 <body>
     <script>
-        /* 创建一个函数，用于在随机位置上创建圆形元素 */
-        function createCircle() {
-            /* 创建一个新的div元素 */
-            var circle = document.createElement("div");
-            /* 将元素添加到页面上 */
-            document.body.appendChild(circle);
-            /* 添加类circle到元素上，这将应用动画 */
-            circle.classList.add("circle");
-            /* 设置圆形元素的随机位置 */
-            circle.style.top = Math.random() * 90 + "%";
-            circle.style.left = Math.random() * 90 + "%";
-            /* 设置随机的背景颜色 */
-            var colors = ["red", "green", "blue", "orange", "purple"];
-            var color = colors[Math.floor(Math.random() * colors.length)];
-            circle.style.backgroundColor = color;
-            /* 在10秒后从页面上删除元素 */
-            setTimeout(function () {
-                circle.remove();
-            }, 10000);
+        // 用于生成随机位置的函数
+        function randomPosition() {
+            var x = Math.floor(Math.random() * window.innerWidth);
+            var y = Math.floor(Math.random() * window.innerHeight);
+            return [x, y];
         }
 
-        /* 每0.25秒调用一次createCircle函数以创建新的圆形元素 */
+        // 用于创建一个新的圆形元素并将其添加到页面上的函数
+        function createCircle() {
+            var color = ['red', 'green', 'blue', 'orange', 'purple', 'pink'];
+            var circle = document.createElement('div');
+            circle.className = 'circle';
+            circle.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
+            var pos = randomPosition();
+            circle.style.top = pos[1] + 'px';
+            circle.style.left = pos[0] + 'px';
+            document.body.appendChild(circle);
+        }
+
+        // 每0.25秒创建一个新的圆形元素
         setInterval(createCircle, 250);
     </script>
 </body>
